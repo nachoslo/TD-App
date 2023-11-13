@@ -1,0 +1,417 @@
+.wrapper {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url(assets/background-image.webp);
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: cover;
+}
+
+.wrapper::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+}
+
+.app {
+  width: 100%;
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.side-btns {
+  height: 100%;
+  margin-left: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.add-todo-btn,
+.delete-todo-btn {
+  width: var(--square-size);
+  min-height: var(--square-size);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--bg-color);
+  backdrop-filter: var(--backdrop-filter);
+  border-radius: var(--border-radius);
+  box-shadow: 0 15px 15px #0000002a;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.add-todo-btn svg path {
+  fill: var(--icon-color);
+}
+
+.add-todo-btn:hover,
+.delete-todo-btn:hover {
+  transform: scale(0.9);
+  box-shadow: 0 5px 15px #0000002a;
+}
+
+.delete-todo-btn svg path {
+  fill: var(--icon-color);
+}
+
+.delete-todo-btn-active {
+  background-color: var(--delete-color);
+}
+
+.side-todos {
+  padding: 0 15px 30px 15px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  border-radius: var(--border-radius);
+}
+
+.side-todos::-webkit-scrollbar {
+  display: none;
+}
+
+.side-todo {
+  font-size: 1.5rem;
+  font-weight: 600;
+  width: var(--square-size);
+  min-height: var(--square-size);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--bg-color);
+  backdrop-filter: var(--backdrop-filter);
+  border-radius: var(--border-radius);
+  box-shadow: 0 15px 15px #0000002a;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.side-todo:hover {
+  transform: scale(0.9);
+  box-shadow: 0 5px 15px #0000002a;
+}
+
+.side-todo-delete:hover {
+  animation: tilt-shaking 0.2s ease-in-out infinite;
+}
+
+.todo-container {
+  width: 500px;
+  height: 100%;
+  position: relative;
+  background-color: var(--bg-color);
+  backdrop-filter: var(--backdrop-filter);
+  border-radius: var(--border-radius);
+  box-shadow: 0 15px 15px 5px #0000002a;
+}
+
+.todo-content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.todo-header {
+  width: 100%;
+  padding: 5% 10% 2% 10%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.todo-title {
+  width: fit-content;
+  display: flex;
+  align-items: center;
+}
+
+.todo-title svg {
+  margin-top: 7px;
+  cursor: pointer;
+}
+
+.title {
+  font-weight: 600;
+  font-size: 2rem;
+  margin-right: 5px;
+  padding: 5px;
+}
+
+.title-input {
+  font-weight: 600;
+  font-size: 2rem;
+  text-align: center;
+  width: 200px;
+  padding: 5px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
+
+.title-input::placeholder {
+  font-weight: 600;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.input-add-task {
+  width: 100%;
+  border: none;
+  border-bottom: thin solid #7c7b7b75;
+  background-color: transparent;
+  outline: none;
+}
+
+.input-add-task::placeholder {
+  color: #7c7b7b75;
+}
+
+.todo-tasks {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.todo-tasks::-webkit-scrollbar {
+  display: none;
+}
+
+.task {
+  font-weight: 400;
+  font-size: 14px;
+  position: relative;
+  padding: 0 10%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  animation: fade-in 0.5s cubic-bezier(0.87, -0.41, 0.19, 1.44);
+}
+
+.task svg {
+  cursor: pointer;
+}
+
+.task-delete {
+  opacity: 0;
+  transition: 0.5s cubic-bezier(0.87, -0.41, 0.19, 1.44);
+  transform: translate(100%, 0);
+}
+
+.task-checked {
+  position: relative;
+  opacity: 0.6;
+}
+
+.task-checked::before {
+  content: "";
+  position: absolute;
+  top: 40%;
+  left: -0.5rem;
+  display: block;
+  width: 0%;
+  height: 1px;
+  background: #33333399;
+  animation: strikeitem 0.3s ease-out 0s forwards;
+}
+
+.task-and-check {
+  display: flex;
+  gap: 15px;
+  cursor: pointer;
+}
+
+.clean-tasks-container {
+  padding: 5% 10%;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.clean-tasks-container button {
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.clean-tasks-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  color: var(--color);
+  transition: 0.2s ease-in-out;
+}
+
+.clean-icon path {
+  transition: 0.2s ease-in-out;
+}
+
+.clean-tasks-btn:hover .clean-icon {
+  animation: tilt-shaking 0.2s infinite;
+}
+
+.clean-tasks-btn:hover .clean-icon path {
+  fill: var(--delete-color);
+}
+
+.clean-tasks-btn-active .clean-icon {
+  animation: tilt-shaking 0.2s infinite;
+}
+
+.clean-tasks-btn-active .clean-icon path {
+  fill: var(--delete-color);
+}
+
+.chevron-down {
+  transition: 0.4s ease-in-out;
+}
+
+.clean-tasks-btn-active .chevron-down {
+  transform: rotate(-90deg);
+}
+
+.clean-tasks-options {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  opacity: 0;
+  transition: 0.5s cubic-bezier(0.87, -0.41, 0.19, 1.44);
+  transform: translate(100%, 0);
+}
+
+.clean-tasks-options-active {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  opacity: 1;
+  transition: 0.5s cubic-bezier(0.87, -0.41, 0.19, 1.44);
+  transform: translate(0, 0);
+}
+
+.task-delete-btn svg path {
+  fill: var(--delete-color);
+}
+
+@keyframes tilt-shaking {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(5deg);
+  }
+  50% {
+    transform: rotate(0eg);
+  }
+  75% {
+    transform: rotate(-5deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes strikeitem {
+  to {
+    width: calc(100% + 1rem);
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    transform: translate(100%, 0);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+}
+
+@media screen and (max-width: 730px) {
+  .wrapper {
+    background-position: 80% 100%;
+  }
+
+  .app {
+    width: 100%;
+    height: 100%;
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .side-btns {
+    width: 100%;
+    padding: 5%;
+    height: fit-content;
+    margin: 0;
+    flex-direction: row;
+  }
+
+  .add-todo-btn,
+  .delete-todo-btn,
+  .side-todo {
+    width: calc(var(--square-size) - 20px);
+    min-height: calc(var(--square-size) - 20px);
+  }
+
+  .side-btns svg {
+    transform: scale(0.7);
+  }
+
+  .side-todos {
+    width: 100%;
+    height: fit-content;
+    padding: 5% 5% 30px;
+    flex-direction: row;
+    align-items: center;
+    overflow-y: hidden;
+    overflow-x: auto;
+  }
+
+  .side-todo {
+    font-size: 1rem;
+    min-width: calc(var(--square-size) - 20px);
+    height: calc(var(--square-size) - 20px);
+  }
+
+  .side-todo-delete {
+    animation: tilt-shaking 0.2s ease-in-out infinite;
+  }
+
+  .todo-container {
+    width: 90%;
+    min-width: 330px;
+    max-height: 450px;
+  }
+
+  .title {
+    word-break: break-all;
+  }
+
+  .task {
+    word-break: break-all;
+  }
+}
