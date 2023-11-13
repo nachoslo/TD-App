@@ -384,7 +384,7 @@
   .side-todos {
     width: 100%;
     height: fit-content;
-    padding: 5% 5% 30px;
+    padding: 5%;
     flex-direction: row;
     align-items: center;
     overflow-y: hidden;
@@ -404,6 +404,7 @@
   .todo-container {
     width: 90%;
     min-width: 330px;
+    min-height: 450px;
     max-height: 450px;
   }
 
