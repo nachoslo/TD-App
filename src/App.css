@@ -1,7 +1,6 @@
 .wrapper {
   position: relative;
   height: 100vh;
-  min-height: --webkit-fill-available;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -349,7 +348,7 @@
   }
 }
 
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 650px) {
   .wrapper {
     height: 100vh;
   }
