@@ -1,6 +1,7 @@
 .wrapper {
   position: relative;
-  height: 100dvh;
+  height: 100vh;
+  min-height: -webkit-fill-available;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -377,7 +378,7 @@
 
   .side-todos {
     width: fit-content;
-    padding: 0 15px 30px;
+    padding: 0 15px;
     flex-direction: column;
     overflow-x: hidden;
     overflow-y: auto;
