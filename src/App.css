@@ -1,6 +1,6 @@
 .wrapper {
   position: relative;
-  height: 100vh;
+  height: 80vh;
   min-height: -webkit-fill-available;
   display: flex;
   justify-content: center;
@@ -308,7 +308,7 @@
   transition: 0.5s cubic-bezier(0.87, -0.41, 0.19, 1.44);
   transform: translate(0, 0);
 }
-
+ 
 .task-delete-btn svg path {
   fill: var(--delete-color);
 }
