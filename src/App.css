@@ -6,10 +6,8 @@
   align-items: center;
   background-image: url(assets/background-image.webp);
   background-repeat: no-repeat;
-  background-position: 80%;
+  background-position: 50% 50%;
   background-size: cover;
-  overflow-y: hidden;
-  overflow-x: hidden;
 }
 
 .wrapper::before {
@@ -22,23 +20,26 @@
 }
 
 .app {
-  width: 100svh;
+  width: 100%;
+  height: 400px;
   display: flex;
-  flex-direction: column-reverse;
   justify-content: center;
+  align-items: center;
 }
 
 .side-btns {
-  padding: 30px 0 30px 15px;
+  height: 100%;
+  margin-left: 15px;
   display: flex;
+  flex-direction: column;
   align-items: center;
   gap: 15px;
 }
 
 .add-todo-btn,
 .delete-todo-btn {
-  width: calc(var(--square-size) - 20px);
-  height: calc(var(--square-size) - 20px);
+  width: var(--square-size);
+  min-height: var(--square-size);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -50,22 +51,14 @@
   transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
 }
 
-.add-todo-btn:hover,
-.delete-todo-btn:hover {
-  transform: scale(0.9);
-  box-shadow: 0 5px 15px #0000002a;
-}
-
-.add-todo-btn svg {
-  transform: scale(0.7);
-}
-
 .add-todo-btn svg path {
   fill: var(--icon-color);
 }
 
-.delete-todo-btn svg {
-  transform: scale(0.8);
+.add-todo-btn:hover,
+.delete-todo-btn:hover {
+  transform: scale(0.9);
+  box-shadow: 0 5px 15px #0000002a;
 }
 
 .delete-todo-btn svg path {
@@ -77,13 +70,14 @@
 }
 
 .side-todos {
-  width: 100%;
-  padding: 30px 15px;
+  padding: 0 15px 30px 15px;
+  height: 100%;
   display: flex;
+  flex-direction: column;
   gap: 15px;
+  overflow-y: auto;
+  overflow-x: hidden;
   border-radius: var(--border-radius);
-  overflow-x: auto;
-  overflow-y: hidden;
 }
 
 .side-todos::-webkit-scrollbar {
@@ -91,10 +85,10 @@
 }
 
 .side-todo {
-  font-size: 1rem;
+  font-size: 1.5rem;
   font-weight: 600;
-  min-width: calc(var(--square-size) - 20px);
-  min-height: calc(var(--square-size) - 20px);
+  width: var(--square-size);
+  min-height: var(--square-size);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -111,13 +105,13 @@
   box-shadow: 0 5px 15px #0000002a;
 }
 
-.side-todo-delete {
+.side-todo-delete:hover {
   animation: tilt-shaking 0.2s ease-in-out infinite;
 }
 
 .todo-container {
-  height: 450px;
-  margin: 0 15px;
+  width: 500px;
+  height: 100%;
   background-color: var(--bg-color);
   backdrop-filter: var(--backdrop-filter);
   border-radius: var(--border-radius);
@@ -157,7 +151,6 @@
   font-size: 2rem;
   margin-right: 5px;
   padding: 5px;
-  word-break: break-all;
 }
 
 .title-input {
@@ -178,7 +171,6 @@
 }
 
 .input-add-task {
-  font-size: 1rem;
   width: 100%;
   border: none;
   border-bottom: thin solid #7c7b7b75;
@@ -187,11 +179,11 @@
 }
 
 .input-add-task::placeholder {
-  font-size: 1rem;
   color: #7c7b7b75;
 }
 
 .todo-tasks {
+  width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -212,7 +204,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  word-break: break-all;
   animation: fade-in 0.5s cubic-bezier(0.87, -0.41, 0.19, 1.44);
 }
 
@@ -274,6 +265,14 @@
   transition: 0.2s ease-in-out;
 }
 
+.clean-tasks-btn:hover .clean-icon {
+  animation: tilt-shaking 0.2s infinite;
+}
+
+.clean-tasks-btn:hover .clean-icon path {
+  fill: var(--delete-color);
+}
+
 .clean-tasks-btn-active .clean-icon {
   animation: tilt-shaking 0.2s infinite;
 }
@@ -307,7 +306,7 @@
   transition: 0.5s cubic-bezier(0.87, -0.41, 0.19, 1.44);
   transform: translate(0, 0);
 }
- 
+
 .task-delete-btn svg path {
   fill: var(--delete-color);
 }
@@ -348,69 +347,71 @@
   }
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (max-width: 730px) {
   .wrapper {
-    height: 100vh;
+    background-position: 80% 100%;
   }
 
   .app {
-    height: 400px;
-    flex-direction: row;
+    width: 100%;
+    height: 100vh;
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
   }
 
   .side-btns {
-    height: 100%;
-    padding: 0 15px;
-    flex-direction: column;
+    width: 100%;
+    padding: 5%;
+    height: fit-content;
+    margin: 0;
+    flex-direction: row;
   }
 
   .add-todo-btn,
-  .delete-todo-btn {
-    width: var(--square-size);
-    min-height: var(--square-size);
+  .delete-todo-btn,
+  .side-todo {
+    width: calc(var(--square-size) - 20px);
+    min-height: calc(var(--square-size) - 20px);
   }
 
-  .add-todo-btn svg,
-  .delete-todo-btn svg {
-    transform: none;
+  .side-btns svg {
+    transform: scale(0.7);
   }
 
   .side-todos {
-    width: fit-content;
-    padding: 0 15px;
-    flex-direction: column;
-    overflow-x: hidden;
-    overflow-y: auto;
+    width: 100%;
+    height: fit-content;
+    padding: 5%;
+    flex-direction: row;
+    align-items: center;
+    overflow-y: hidden;
+    overflow-x: auto;
   }
 
   .side-todo {
-    font-size: 1.5rem;
-    width: var(--square-size);
-    min-height: var(--square-size);
+    font-size: 1rem;
+    min-width: calc(var(--square-size) - 20px);
+    height: calc(var(--square-size) - 20px);
   }
 
   .side-todo-delete {
-    animation: none;
-  }
-
-  .side-todo-delete:hover {
     animation: tilt-shaking 0.2s ease-in-out infinite;
   }
 
   .todo-container {
-    width: 500px;
-    height: 100%;
+    width: 90%;
+    min-width: 330px;
+    min-height: 450px;
+    max-height: 450px;
   }
 
-  .todo-tasks {
-    width: 100%;
+  .title {
+    word-break: break-all;
   }
 
-  .clean-tasks-btn:hover .clean-icon path {
-    fill: var(--delete-color);
-  }
-
-  .clean-tasks-btn:hover .clean-icon {
-    animation: tilt-shaking 0.2s infinite;
+  .task {
+    word-break: break-all;
   }
 }
