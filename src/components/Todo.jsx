@@ -12,7 +12,7 @@ const Todo = () => {
   const addTask = (e, id) => {
     if (e.keyCode === 13) {
       let msg = e.target.value;
-      let regex = new RegExp(/^[A-Za-z0-9\s]{0,40}$/g);
+      let regex = new RegExp(/^[A-Za-zÁÉÍÓÚáéíóúñÑ0-9\s]{0,40}$/g);
       let test = regex.test(msg);
       if (test) {
         dispatch({ type: TYPES.ADD_TASK, payload: { msg, id } });
@@ -23,7 +23,7 @@ const Todo = () => {
 
   const editTitleBlur = (e, id) => {
     let title = e.target.value;
-    let regex = new RegExp(/^[A-Za-z0-9\s]{0,20}$/g);
+    let regex = new RegExp(/^[A-Za-zÁÉÍÓÚáéíóúñÑ0-9\s]{0,40}$/g);
     let test = regex.test(title);
 
     if (test) {
@@ -35,7 +35,7 @@ const Todo = () => {
   const editTitle = (e, id) => {
     if (e.keyCode === 13) {
       let title = e.target.value;
-      let regex = new RegExp(/^[A-Za-z0-9\s]{0,20}$/g);
+      let regex = new RegExp(/^[A-Za-zÁÉÍÓÚáéíóúñÑ0-9\s]{0,40}$/g);
       let test = regex.test(title);
 
       if (test) {
