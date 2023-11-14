@@ -22,7 +22,7 @@
 }
 
 .app {
-  width: 100%;
+  width: 100svh;
   display: flex;
   flex-direction: column-reverse;
   justify-content: center;
