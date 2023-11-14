@@ -171,6 +171,7 @@
 }
 
 .input-add-task {
+  font-size: 16px;
   width: 100%;
   border: none;
   border-bottom: thin solid #7c7b7b75;
