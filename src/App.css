@@ -433,7 +433,7 @@
   }
 }
 
-@media screen and (max-width: 375px) {
+@media screen and (max-width: 320px) {
   .side-btns {
     width: 300px;
   }
