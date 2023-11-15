@@ -403,6 +403,7 @@
 
   .todo-container {
     min-width: 350px;
+    height: 400px;
     max-height: 400px;
     box-shadow: 0 5px 5px #0000002a;
   }
