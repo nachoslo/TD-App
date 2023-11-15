@@ -443,7 +443,7 @@
   }
 
   .todo-container {
-    min-width: 300px;
+    max-width: 300px;
     height: 350px;
     max-height: 350px;
   }
