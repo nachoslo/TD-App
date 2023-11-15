@@ -433,7 +433,7 @@
   }
 }
 
-@media screen and (min-height: 667px) { /* iphone 7 */
+@media screen and (max-height: 667px) { /* iphone 7 */
   .side-btns {
     width: 300px;
   }
